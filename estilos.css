@@ -10,4 +10,12 @@
 .mosquito3{
     width: 90px;
     height: 90px;
-}   
+}
+
+.ladoA {
+    transform: scaleX(1);
+}
+
+.ladoA {
+    transform: scaleX(-1);
+}

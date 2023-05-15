@@ -29,7 +29,7 @@ function posicaoRandomica() {
 
     var mosquito = document.createElement('img')
     mosquito.src = 'imagens/mosquito.png'
-    mosquito.className = tamanhoAleatorio()
+    mosquito.className = tamanhoAleatorio() + ' ' + ladoAleatorio ()
     mosquito.style.left = posicaoX + 'px'
     mosquito.style.top = posicaoY + 'px'
     mosquito.style.position = 'absolute'
@@ -48,5 +48,18 @@ function tamanhoAleatorio () {
             return 'mosquito2'
         case 2:
             return 'mosquito3'      
+    }
+}
+
+function ladoAleatorio () {
+    var classe = Math.floor(Math.random() * 2)
+
+    switch(classe) {
+        
+        case 0:
+            return 'ladoA'
+        case 1:
+            return 'ladoB'
+             
     }
 }
