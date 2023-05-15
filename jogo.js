@@ -7,7 +7,7 @@ function ajustaTamanhoPalcoJogo() {
     altura = window.innerHeight
     largura = window.innerWidth
 
-    console.log(altura, largura)
+    console.log(largura,alura)
 }
 
 ajustaTamanhoPalcoJogo()
@@ -17,19 +17,21 @@ ajustaTamanhoPalcoJogo()
 
 function posicaoRandomica() {
 
-    //removendo mosquito anterior (caso exista) 
-    if (document.getElementById('mosquito')) {
-            document.getElementById('mosquito').remove()
+    //removendo mosquito anterior (caso exista)
+    if(document.getElementById('mosquito')) {
+		document.getElementById('mosquito').remove()
 
-            console.log('Elemento selecionado foi: v' + vidas)
-            if(vidas > 3) {
-                alert('game over')
-            } else{
-            document.getElementById('v' + vidas).src = "imagens/coracao_vazio.png"
+		//console.log('Elemento selecionado foi: v' + vidas)
+        //logica de remover pontos de vidas caso não acerte o mosquito com click do mouse
+		if(vidas > 3) {
 
-            vidas++
-        }
-    }
+			alert('Interromper o jogo (game over)')
+		} else {
+			document.getElementById('v' + vidas).src = "imagens/coracao_vazio.png"
+
+			vidas++
+		}
+	}          
     var posicaoX = Math.floor(Math.random() * largura) - 90
     var posicaoY = Math.floor(Math.random() * altura) - 90
 
@@ -43,17 +45,17 @@ function posicaoRandomica() {
     //Criando elementos html usando DOM
 
     var mosquito = document.createElement('img')
-    mosquito.src = 'imagens/mosquito.png'
-    mosquito.className = tamanhoAleatorio() + ' ' + ladoAleatorio ()
-    mosquito.style.left = posicaoX + 'px'
-    mosquito.style.top = posicaoY + 'px'
-    mosquito.style.position = 'absolute'
-    mosquito.id = 'mosquito'
+	mosquito.src = 'imagens/mosquito.png'
+	mosquito.className = tamanhoAleatorio() + ' ' + ladoAleatorio()
+	mosquito.style.left = posicaoX + 'px'
+	mosquito.style.top = posicaoY + 'px'
+	mosquito.style.position = 'absolute'
+	mosquito.id = 'mosquito'
     //função que ao clicar no mosquito remove ele, sem perder pontos de vidas.
-    mosquito.onclick = function() {
-        this.remove()
-    }
-
+	mosquito.onclick = function() {
+		this.remove()
+	}
+    
     document.body.appendChild(mosquito)
 }
 

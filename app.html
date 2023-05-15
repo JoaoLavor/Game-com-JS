@@ -1,32 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-   
-    <title></title>
+<html>
+	<head>
+		<title></title>
 
-    <link rel="stylesheet" href="estilos.css">
-    
-    <script src="jogo.js"></script>
-</head>
+		<link rel="stylesheet" href="estilos.css" />
+		<script src="jogo.js"></script>
+	</head>
+	<body onresize="ajustaTamanhoPalcoJogo()">
 
-<body onresize="ajustaTamanhoPalcoJogo()">
+		<div class="painel">
+			<div class="vidas">
+				<img id="v1" src="imagens/coracao_cheio.png" />
+				<img id="v2" src="imagens/coracao_cheio.png" />
+				<img id="v3" src="imagens/coracao_cheio.png" />
+			</div>
 
-    <div class="painel">
-        <div class="vidas">
-            <img src="imagens/coracao_vazio.png">
-            <img src="imagens/coracao_cheio.png">
-            <img src="imagens/coracao_cheio.png">
-        </div>
-        <div class="cronometro"> Tempo Restante
+			<div class="cronometro">Tempo restante: ?</div>
+		</div>
 
-        </div>
-    </div>
-
-    <script>
-        setInterval(function() {
-            posicaoRandomica()
-        }, 1000)
-    </script>
-</body>
-
+		<script>
+			setInterval(function() { 
+				posicaoRandomica()
+			}, 2000)
+		</script>
+	</body>
 </html>
