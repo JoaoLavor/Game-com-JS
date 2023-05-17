@@ -2,51 +2,66 @@
 var altura = 0
 var largura = 0
 var vidas = 1
+var tempo = 15
 
 function ajustaTamanhoPalcoJogo() {
-    altura = window.innerHeight
-    largura = window.innerWidth
+	altura = window.innerHeight
+	largura = window.innerWidth
 
-    console.log(largura,alura)
+	console.log(altura,largura )
 }
 
 ajustaTamanhoPalcoJogo()
 
-//Criando mosquitos de forma aleatória na tela 
-//(Math.floor = tirar casas decimais)
+//lógico do cronometro
+var cronometro = setInterval(function() {
+
+	tempo -= 1
+
+	if(tempo < 0) {
+		clearInterval(cronometro)
+		clearInterval(criaMosca)
+		alert('Vitoria')
+	} else {
+		document.getElementById('cronometro').innerHTML = tempo
+	}
+	
+}, 1000)
 
 function posicaoRandomica() {
 
-    //removendo mosquito anterior (caso exista)
-    if(document.getElementById('mosquito')) {
+
+	//remover o mosquito anterior (caso exista)
+	if(document.getElementById('mosquito')) {
 		document.getElementById('mosquito').remove()
 
-		//console.log('Elemento selecionado foi: v' + vidas)
-        //logica de remover pontos de vidas caso não acerte o mosquito com click do mouse
-		if(vidas > 3) {
-
-            //Usando o BOM para redirecionar o jogador para outra página 
-            window.location.href = 'fim_de_jogo.html'
-			
+		//console.log('elemento selecionado foi: v' + vidas)
+		//logica de remover pontos de vidas caso não acerte o mosquito com click do mouse
+        if(vidas > 3) {
+            
+            //Usando o BOM para redirecionar o jogador para outra página
+			window.location.href = 'fim_de_jogo.html'
 		} else {
 			document.getElementById('v' + vidas).src = "imagens/coracao_vazio.png"
 
 			vidas++
 		}
-	}          
-    var posicaoX = Math.floor(Math.random() * largura) - 90
-    var posicaoY = Math.floor(Math.random() * altura) - 90
+	}
 
- // posicaoX ou posicaoY recebem 0 se posicaoX ou posicaoY for menor que 0 caso contrario recebem elas mesmo 
-    posicaoX = posicaoX < 0 ? 0 : posicaoX
-    posicaoY = posicaoY < 0 ? 0 : posicaoY
+    //Criando mosquitos de forma aleatória na tela 
+    //(Math.floor = tirar casas decimais)
 
-    console.log(posicaoX, posicaoY)
+	var posicaoX = Math.floor(Math.random() * largura) - 90
+	var posicaoY = Math.floor(Math.random() * altura) - 90
 
+    //posicaoX ou posicaoY recebem 0 se posicaoX ou posicaoY for menor que 0 caso contrario recebem elas mesmo
+	posicaoX = posicaoX < 0 ? 0 : posicaoX
+	posicaoY = posicaoY < 0 ? 0 : posicaoY
 
-    //Criando elementos html usando DOM
+	console.log(posicaoX, posicaoY)
 
-    var mosquito = document.createElement('img')
+	//Criando elementos html usando DOM
+	var mosquito = document.createElement('img')
 	mosquito.src = 'imagens/mosquito.png'
 	mosquito.className = tamanhoAleatorio() + ' ' + ladoAleatorio()
 	mosquito.style.left = posicaoX + 'px'
@@ -58,32 +73,35 @@ function posicaoRandomica() {
 		this.remove()
 	}
 
-    document.body.appendChild(mosquito)
+	document.body.appendChild(mosquito)
+
 }
 
-function tamanhoAleatorio () {
-    var classe = Math.floor(Math.random() * 3)
+function tamanhoAleatorio() {
+	var classe = Math.floor(Math.random() * 3)
+	
+	switch(classe) {
+		case 0:
+			return 'mosquito1'
+		
+		case 1:
+			return 'mosquito2'
 
-    switch(classe) {
-        
-        case 0:
-            return 'mosquito1'
-        case 1:
-            return 'mosquito2'
-        case 2:
-            return 'mosquito3'      
-    }
+		case 2:
+			return 'mosquito3'
+	}
 }
 
-function ladoAleatorio () {
-    var classe = Math.floor(Math.random() * 2)
+function ladoAleatorio() {
+	var classe = Math.floor(Math.random() * 2)
+	
+	switch(classe) {
+		case 0:
+			return 'ladoA'
+		
+		case 1:
+			return 'ladoB'
 
-    switch(classe) {
-        
-        case 0:
-            return 'ladoA'
-        case 1:
-            return 'ladoB'
-             
-    }
+	}
 }
+
