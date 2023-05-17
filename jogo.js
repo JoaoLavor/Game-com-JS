@@ -25,7 +25,9 @@ function posicaoRandomica() {
         //logica de remover pontos de vidas caso não acerte o mosquito com click do mouse
 		if(vidas > 3) {
 
-			alert('Interromper o jogo (game over)')
+            //Usando o BOM para redirecionar o jogador para outra página 
+            window.location.href = 'fim_de_jogo.html'
+			
 		} else {
 			document.getElementById('v' + vidas).src = "imagens/coracao_vazio.png"
 
@@ -55,7 +57,7 @@ function posicaoRandomica() {
 	mosquito.onclick = function() {
 		this.remove()
 	}
-    
+
     document.body.appendChild(mosquito)
 }
 
